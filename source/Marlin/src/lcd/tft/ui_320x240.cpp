@@ -343,7 +343,7 @@ void MarlinUI::draw_status_screen(char seclect) {
       }
       else
       {
-        color=COLOR_YELLOW;
+        color=COLOR_GREY;
       }
       tft.canvas(4, 103, 125, 24);
       tft.set_background(COLOR_BACKGROUND);
@@ -351,7 +351,7 @@ void MarlinUI::draw_status_screen(char seclect) {
       {
         tft.add_rectangle(0, 0, 125, 24, COLOR_AXIS_HOMED);
       }
-      tft.add_text( 5, 3, color , "Z Offset: ");
+      tft.add_text( 5, 3, color , "Z Offset:");
       tft.add_text( 75, 3, color ,ftostr42_52( probe.offset.z));      
 //    }
 
@@ -540,7 +540,7 @@ void MarlinUI::draw_status_screen(char seclect) {
   }
   else
   {
-    color=COLOR_YELLOW;
+    color=COLOR_GREY;
   }
   duration_t elapsed = print_job_timer.duration();
   elapsed.toDigital(buffer);

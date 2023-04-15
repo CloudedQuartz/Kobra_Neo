@@ -242,25 +242,25 @@ void version_message(){
 			tft.set_background(COLOR_BACKGROUND);
 			tft_string.set(DEVICE_NAME);
 			tft_string.trim();
-			tft.add_text(tft_string.center(TFT_WIDTH),5,COLOR_YELLOW,tft_string);
+			tft.add_text(tft_string.center(TFT_WIDTH),5,COLOR_WHITE,tft_string);
 
 			tft.canvas(0, 80, TFT_WIDTH, 30);
 			tft.set_background(COLOR_BACKGROUND);
 			tft_string.set(FIRMWARE_VER);
 			tft_string.trim();
-			tft.add_text(tft_string.center(TFT_WIDTH),5,COLOR_YELLOW,tft_string);
+			tft.add_text(tft_string.center(TFT_WIDTH),5,COLOR_WHITE,tft_string);
 			
 			tft.canvas(0, 120, TFT_WIDTH, 30);
 			tft.set_background(COLOR_BACKGROUND);
 			tft_string.set(BUILD_VOLUME);
 			tft_string.trim();
-			tft.add_text(tft_string.center(TFT_WIDTH),5,COLOR_YELLOW,tft_string);
+			tft.add_text(tft_string.center(TFT_WIDTH),5,COLOR_WHITE,tft_string);
 
 			tft.canvas(0, 160, TFT_WIDTH, 30);
 			tft.set_background(COLOR_BACKGROUND);
 			tft_string.set(TECH_SUPPORT);
 			tft_string.trim();
-			tft.add_text(tft_string.center(TFT_WIDTH),5,COLOR_YELLOW,tft_string);
+			tft.add_text(tft_string.center(TFT_WIDTH),5,COLOR_WHITE,tft_string);
 			//ui.refresh(LCDVIEW_CALL_REDRAW_NEXT);
 	}
 	if(ui.use_click()) {ui.return_to_status();}
