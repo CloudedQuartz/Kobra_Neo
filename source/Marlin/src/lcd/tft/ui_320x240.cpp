@@ -474,7 +474,11 @@ void MarlinUI::draw_status_screen(char seclect) {
        }
        else          //压根就没有打印
        {
-         color=COLOR_GREY;
+#ifdef ACTION_ON_START
+         color=COLOR_GREEN;
+#else
+         color=COLOR_GREY; 
+#endif
        }
        tft.canvas(185, 140, 50, 50);
       tft.set_background(COLOR_BACKGROUND);

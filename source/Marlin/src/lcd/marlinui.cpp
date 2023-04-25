@@ -589,6 +589,7 @@ constexpr uint8_t epps = ENCODER_PULSES_PER_STEP;
 
        int16_t old_data,new_data;
       static int16_t seclect=6;
+	  static bool host_pause_requested=false;
       const bool busy = printingIsActive();
       const bool Paused= printingIsPaused();
      TERN_(HAS_LCD_MENU, ENCODER_RATE_MULTIPLY(false));
@@ -718,6 +719,28 @@ constexpr uint8_t epps = ENCODER_PULSES_PER_STEP;
 //              }
                 seclect=1;
         }
+#ifdef HOST_ACTION_COMMANDS
+      else
+      {
+        if( !busy )
+        {
+          LCD_MESSAGEPGM(MSG_HOST_START_PRINT);
+          host_action_start();
+        }
+        else if( host_pause_requested )
+        {
+          LCD_MESSAGEPGM(MSG_RESUME_PRINT);
+          host_pause_requested = false;
+          host_action_resume();
+        }
+        else
+        {
+          LCD_MESSAGEPGM(MSG_PAUSING);
+          host_pause_requested = true;
+          host_action_pause();
+        }
+      }
+#endif
         break;
         
         case 8:               //ÖÐÖ¹´òÓ¡
@@ -727,6 +750,12 @@ constexpr uint8_t epps = ENCODER_PULSES_PER_STEP;
           ui.refresh();  
           seclect=1;
         }
+#ifdef ACTION_ON_CANCEL
+      else
+      {
+        host_action_cancel();
+      }
+#endif
         break;
         default:
               seclect=1;
@@ -790,7 +819,11 @@ constexpr uint8_t epps = ENCODER_PULSES_PER_STEP;
                 seclect++;
                if((!busy)&&(!Paused))
                {
+#ifdef ACTION_ON_START
+                  if(seclect>7)
+#else				   
                   if(seclect>6)
+#endif
                   {
                     seclect=1;
                   }
@@ -807,7 +840,11 @@ constexpr uint8_t epps = ENCODER_PULSES_PER_STEP;
                   {
                         if((!busy)&&(!Paused))
                         {
+#ifdef ACTION_ON_START
+                          seclect=7;
+#else							
                           seclect=6;
+#endif
                         }
                         else
                         {
