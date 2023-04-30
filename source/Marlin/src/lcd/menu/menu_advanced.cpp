@@ -503,7 +503,7 @@ void menu_backlash();
         EDIT_ITEM(float31sign, MSG_PROBE_XOFFSET, &probe.offset.x, -(X_BED_SIZE), X_BED_SIZE);
         EDIT_ITEM(float31sign, MSG_PROBE_YOFFSET, &probe.offset.y, -(Y_BED_SIZE), Y_BED_SIZE);
       #endif
-      //EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_ZPROBE_ZOFFSET, &probe.offset.z, Z_PROBE_OFFSET_RANGE_MIN, Z_PROBE_OFFSET_RANGE_MAX);
+      EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_ZPROBE_ZOFFSET, &probe.offset.z, Z_PROBE_OFFSET_RANGE_MIN, Z_PROBE_OFFSET_RANGE_MAX);
 
       #if ENABLED(PROBE_OFFSET_WIZARD)
         SUBMENU(MSG_PROBE_WIZARD, goto_probe_offset_wizard);
@@ -554,12 +554,12 @@ void menu_advanced_settings() {
 
   #if DISABLED(SLIM_LCD_MENUS)
 
-//    #if HAS_M206_COMMAND
-//      //
-//      // Set Home Offsets
-//      //
-//      ACTION_ITEM(MSG_SET_HOME_OFFSETS, []{ queue.inject_P(PSTR("M428")); ui.return_to_status(); });
-//    #endif
+    // #if HAS_M206_COMMAND
+    //   //
+    //   // Set Home Offsets
+    //   //
+    //   ACTION_ITEM(MSG_SET_HOME_OFFSETS, []{ queue.inject_P(PSTR("M428")); ui.return_to_status(); });
+    // #endif
 
     // M203 / M205 - Feedrate items
     SUBMENU(MSG_VELOCITY, menu_advanced_velocity);
@@ -602,20 +602,20 @@ void menu_advanced_settings() {
     SUBMENU(MSG_TMC_DRIVERS, menu_tmc);
   #endif
 
-//  #if SHOW_MENU_ADVANCED_TEMPERATURE
-//    SUBMENU(MSG_TEMPERATURE, menu_advanced_temperature);
-//  #endif
+  #if SHOW_MENU_ADVANCED_TEMPERATURE
+    SUBMENU(MSG_TEMPERATURE, menu_advanced_temperature);
+  #endif
 
-//  #if DISABLED(NO_VOLUMETRICS) || ENABLED(ADVANCED_PAUSE_FEATURE)
-//    SUBMENU(MSG_FILAMENT, menu_advanced_filament);
-//  #elif ENABLED(LIN_ADVANCE)
-//    #if EXTRUDERS == 1
-//      EDIT_ITEM(float42_52, MSG_ADVANCE_K, &planner.extruder_advance_K[0], 0, 10);
-//    #elif HAS_MULTI_EXTRUDER
-//      LOOP_L_N(n, E_STEPPERS)
-//        EDIT_ITEM_N(float42_52, n, MSG_ADVANCE_K_E, &planner.extruder_advance_K[n], 0, 10);
-//    #endif
-//  #endif
+  #if DISABLED(NO_VOLUMETRICS) || ENABLED(ADVANCED_PAUSE_FEATURE)
+    SUBMENU(MSG_FILAMENT, menu_advanced_filament);
+  #elif ENABLED(LIN_ADVANCE)
+    #if EXTRUDERS == 1
+      EDIT_ITEM(float42_52, MSG_ADVANCE_K, &planner.extruder_advance_K[0], 0, 10);
+    #elif HAS_MULTI_EXTRUDER
+      LOOP_L_N(n, E_STEPPERS)
+        EDIT_ITEM_N(float42_52, n, MSG_ADVANCE_K_E, &planner.extruder_advance_K[n], 0, 10);
+    #endif
+  #endif
 
   // M540 S - Abort on endstop hit when SD printing
   #if ENABLED(SD_ABORT_ON_ENDSTOP_HIT)
@@ -639,13 +639,13 @@ void menu_advanced_settings() {
     SUBMENU(MSG_PASSWORD_SETTINGS, password.access_menu_password);
   #endif
 
-//  #if ENABLED(EEPROM_SETTINGS) && DISABLED(SLIM_LCD_MENUS)
-//    CONFIRM_ITEM(MSG_INIT_EEPROM,
-//      MSG_BUTTON_INIT, MSG_BUTTON_CANCEL,
-//      ui.init_eeprom, nullptr,
-//      GET_TEXT(MSG_INIT_EEPROM), (const char *)nullptr, PSTR("?")
-//    );
-//  #endif
+  #if ENABLED(EEPROM_SETTINGS) && DISABLED(SLIM_LCD_MENUS)
+    CONFIRM_ITEM(MSG_INIT_EEPROM,
+      MSG_BUTTON_INIT, MSG_BUTTON_CANCEL,
+      ui.init_eeprom, nullptr,
+      GET_TEXT(MSG_INIT_EEPROM), (const char *)nullptr, PSTR("?")
+    );
+  #endif
 
   END_MENU();
 }
