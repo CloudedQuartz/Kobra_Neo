@@ -963,6 +963,9 @@
   #include "hc32f4/pins_AQUILA_101.h"               // HC32F460                             env:HC32F460C_aquila_101
 #elif MB(CREALITY_ENDER2P_V24S4)
   #include "hc32f4/pins_CREALITY_ENDER2P_V24S4.h"   // HC32F460                             env:HC32F460C_e2p24s4
+#elif MB(AC_TRI_F1_V1)
+  #include "hc32f4/pins_AC_TRI_F1_V1.h"             // HC32F460                             env:HC32F460C_ac_tri_f1_v1
+
 
 //
 // GD32 ARM Cortex-M4
