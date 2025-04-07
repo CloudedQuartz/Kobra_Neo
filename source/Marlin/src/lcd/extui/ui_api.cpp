@@ -898,7 +898,7 @@ namespace ExtUI {
             destination = current_position;
             destination.z = Z_CLEARANCE_BETWEEN_PROBES;
             prepare_line_to_destination();
-            feedrate_mm_s = XY_PROBE_FEEDRATE;
+            feedrate_mm_s = XY_PROBE_FEEDRATE_MM_S;
             destination.x = x_target;
             destination.y = y_target;
             prepare_line_to_destination();
