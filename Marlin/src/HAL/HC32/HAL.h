@@ -77,6 +77,10 @@
 #define cli() __disable_irq()
 #define sei() __enable_irq()
 
+#define ISRS_ENABLED() NOOP//(!__get_PRIMASK())
+#define ENABLE_ISRS()  __enable_irq()
+#define DISABLE_ISRS() __disable_irq()
+
 // bss_end alias
 #define __bss_end __bss_end__
 
@@ -112,6 +116,8 @@
 #define JTAGSWD_RESET() PORT_DebugPortSetting(DBG_ALL, Enable);
 #define JTAG_DISABLE() PORT_DebugPortSetting(DBG_TDO | DBG_TDI | DBG_TRST, Disable);
 #define JTAGSWD_DISABLE() PORT_DebugPortSetting(DBG_ALL, Disable);
+
+
 
 //
 // MarlinHAL implementation
