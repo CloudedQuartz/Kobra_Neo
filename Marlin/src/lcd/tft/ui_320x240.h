@@ -234,9 +234,9 @@
 #endif
 
 #if !defined(REMAINING_TIME_IMAGE_X) && !defined(REMAINING_TIME_IMAGE_Y) && !defined(REMAINING_TIME_TEXT_X) && !defined(REMAINING_TIME_TEXT_Y)
-  #define REMAINING_TIME_IMAGE_X    tft_string.center(ELAPSED_TIME_W) - 18
+  #define REMAINING_TIME_IMAGE_X    tft_string.center(REMAINING_TIME_W) - 18
   #define REMAINING_TIME_IMAGE_Y    0
-  #define REMAINING_TIME_TEXT_X     tft_string.center(ELAPSED_TIME_W) + 18
+  #define REMAINING_TIME_TEXT_X     tft_string.center(REMAINING_TIME_W) + 18
   #define REMAINING_TIME_TEXT_Y     tft_string.vcenter(29)
 #endif
 
