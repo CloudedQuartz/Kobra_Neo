@@ -262,7 +262,7 @@
 #define BOARD_USART4_RX_PIN     PB3
 
 /*
-//*************************now_just_test_***********************
+*************************now_just_test_***********************
 #define BTN_EN1                     PB10    // 31
 #define BTN_EN2                     PB3    // 33
 #define BTN_ENC                     PB4  
