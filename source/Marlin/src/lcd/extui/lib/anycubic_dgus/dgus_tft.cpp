@@ -2909,7 +2909,7 @@ namespace Anycubic {
   
             case 1:   // auto leveling start
             {
-              injectCommands_P(PSTR("M851 Z0\nG28\nG29"));
+              injectCommands_P(PSTR("G28\nG29"));
               printer_state = AC_printer_probing;
               ChangePageOfTFT(PAGE_LEVELING);
             }
@@ -3440,7 +3440,7 @@ namespace Anycubic {
 
         delay(3000);
 
-        injectCommands_P(PSTR("M851 Z0\nG28\nG29"));
+        injectCommands_P(PSTR("G28\nG29"));
         printer_state = AC_printer_probing;
         ChangePageOfTFT(PAGE_LEVELING);
     }

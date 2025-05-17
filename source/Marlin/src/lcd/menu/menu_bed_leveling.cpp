@@ -316,7 +316,7 @@ void leveing_probeing()
 void begin_bed_lever()
 {
 		ui.is_leveing = true; // The status page is not returned when remove sd card
-    queue.inject_P(PSTR("M851 Z0\nG28\nG29"));
+    queue.inject_P(PSTR("G28\nG29"));
    	//ui.return_to_status();
    	ui.goto_screen(leveing_probeing);
    	
